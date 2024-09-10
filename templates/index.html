@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+    <form action="/recommend" method="POST">
+        <label for="startYear">Start Year:</label>
+        <input type="text" name="startYear" id="startYear"><br><br>
+
+        <label for="endYear">End Year:</label>
+        <input type="text" name="endYear" id="endYear"><br><br>
+
+        <label for="genres">Genres (comma-separated):</label>
+        <input type="text" name="genres" id="genres"><br><br>
+
+        <label for="actor_names">Actor Names (comma-separated):</label>
+        <input type="text" name="actor_names" id="actor_names"><br><br>
+
+        <label for="primaryName">Director Names (comma-separated):</label>
+        <input type="text" name="primaryName" id="primaryName"><br><br>
+
+        <input type="submit" value="Get Recommendations">
+    </form>
+</body>
+</html>
