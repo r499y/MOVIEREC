@@ -74,10 +74,10 @@ def calculate_weights(df):
 def select_manual_centroids(df, n_clusters=4):
     features = df[['Wa', 'Wd', 'Wg', 'Wy', 'Wr']].values
 
-    # Step 1: Selezioniamo il primo centroide (ad esempio il primo film)
+    # Selezioniamo il primo centroide (ad esempio il primo film)
     centroids = [features[0]]  # Il primo centroide è il primo film
     
-    # Step 2: Seleziona i successivi centroidi in modo che siano distanziati dal precedente
+    # Seleziona i successivi centroidi in modo che siano distanziati dal precedente
     for _ in range(1, n_clusters):
         # Calcola la distanza Euclidea tra ogni punto e il centroide più vicino già selezionato
         distances = np.array([min([euclidean(f, c) for c in centroids]) for f in features])
@@ -99,15 +99,15 @@ def perform_kmeans_manual(df, n_clusters=4):
     # Variabile per tracciare i cambiamenti nei centroidi
     prev_centroids = np.zeros_like(initial_centroids)
     
-    # Step 5-8: Itera fino a quando i centroidi non smettono di cambiare
+    # Itera fino a quando i centroidi non smettono di cambiare
     while not np.allclose(initial_centroids, prev_centroids):
-        # Step 7: Assegna ciascun film al centroide più vicino usando la distanza Euclidea
+        # Assegna ciascun film al centroide più vicino usando la distanza Euclidea
         df['cluster'] = pairwise_distances_argmin(features, initial_centroids)
         
         # Salva i centroidi precedenti
         prev_centroids = initial_centroids.copy()
         
-        # Step 7: Ricalcola nuovi centroidi come la media dei punti assegnati a ciascun cluster
+        # Ricalcola nuovi centroidi come la media dei punti assegnati a ciascun cluster
         for i in range(n_clusters):
             # Otteniamo i film assegnati al cluster i
             cluster_points = features[df['cluster'] == i]
